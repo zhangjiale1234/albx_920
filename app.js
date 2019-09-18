@@ -8,12 +8,13 @@ app.listen(8899,()=>{
 //管理静态资源
 app.use('/assets',express.static('assets'))
 app.use('/views',express.static('views'))
+app.use('/uploads',express.static('uploads'))
 //引入配置ejs
 app.set('view engine','ejs')
 app.set('views','views')
 
+//注册body-parser
 app.use(bodyParser.urlencoded({extended:false}))
-app.use(bodyParser.json)
 
 //注册路由
 app.use(router)
