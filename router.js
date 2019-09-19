@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("./controller/pageController.js");
+const userController = require("./controller/userController.js");
 
 router.get("/", (req, res) => {
   controller.getIndexPage(req, res);
@@ -49,6 +50,8 @@ router.get("/admin/slides.html", (req, res) => {
 router.get("/admin/users.html", (req, res) => {
   controller.getUsersPage(req, res);
 });
-
+router.post("/login", (req, res) => {
+  userController.getLoginPage(req, res);
+});
 
 module.exports = router;
