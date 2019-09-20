@@ -1,7 +1,7 @@
-<%- include('./layouts/admin_header.ejs'); %>
-<body>
+<%- include('./layouts/admin_header.ejs');%>
+
   <div class="main">
-      <%- include('./layouts/admin_navbar.ejs'); %>
+    <%- include('./layouts/admin_navbar.ejs');%>
     <div class="container-fluid">
       <div class="page-title">
         <h1>我的个人资料</h1>
@@ -51,13 +51,12 @@
         <div class="form-group">
           <div class="col-sm-offset-3 col-sm-6">
             <button type="submit" class="btn btn-primary">更新</button>
-            <a class="btn btn-link" href="password-reset.html">修改密码</a>
+            <a class="btn btn-link" href="/admin/password-reset">修改密码</a>
           </div>
         </div>
       </form>
     </div>
   </div>
+  <%- include('./layouts/admin_aside.ejs');%>
 
-  <!-- 这个位置将来需要引入左侧导航栏 -->
-  <%- include('./layouts/admin_aside.ejs'); %>
-  <%- include('./layouts/admin_footer.ejs'); %>
+  <%- include('./layouts/admin_footer.ejs');%>

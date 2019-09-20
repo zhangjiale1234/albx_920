@@ -1,4 +1,5 @@
 const model = require('../model/pageModel');
+const querystring = require('querystring');
 module.exports = {
     getIndexPage(req,res){
         res.render('index.ejs')
@@ -13,7 +14,14 @@ module.exports = {
         res.render('admin/categories')
     },
     getAdminIndexPage(req,res){
-        res.render('admin/index')
+            res.render('admin/index')
+        // let obj = querystring.parse(req.headers.cookie)
+        // if(obj.isLogin&&obj.isLogin == 'true'){
+        //     res.render('admin/index')
+        // }
+        // else{
+        //     res.redirect('../admin/login.html')
+        // }
     },
     getCommentsPage(req,res){
         res.render('admin/comments')
@@ -46,6 +54,7 @@ module.exports = {
     },
     getSettingsPage(req,res){
         res.render('admin/settings')
-    }
+    },
+    
 
 }

@@ -9,10 +9,11 @@ $(function(){
             success:function(res){
               
               if(res.code == 200){
-                alert('恭喜登录成功')
-                location.href = '../../admin/index.html'
-              //   $('#tips').show(300).delay(1000).fadeOut(1000)
-              // $('#tips').html('恭喜登录成功')
+                $('#tips').show(300).delay(1000).fadeOut(1000)
+                  $('#tips').html('恭喜登录成功,请稍后')
+                setTimeout(() => {
+                location.href = '../../admin'
+                }, 1000);
               }
               else{
                 // alert('密码错误，请重试')
@@ -24,15 +25,4 @@ $(function(){
     })
 })
 
-// $(function() {
-//   $(".btnlogin").on("click", function() {
-//     $.post(
-//       "/login",
-//       $("form").serialize(),
-//       function(res) {
-//         console.log(res);
-//       },
-//       "json"
-//     );
-//   });
-// });
+
