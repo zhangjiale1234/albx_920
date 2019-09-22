@@ -60,5 +60,13 @@ router.get('/logout',(req,res)=>{
 router.get('/getPostsData',(req,res)=>{
   postsController.getPostsData(req,res)
 })
-
+router.get('/getPostsList',(req,res)=>{
+  postsController.getPostsList(req,res)
+})
+router.get('/getSectionData',(req,res)=>{
+  postsController.getSectionData(req,res)
+})
+// router.post('/searchPostsData',(req,res)=>{
+//   postsController.searchPostsData(req,res)
+// })
 module.exports = router;
