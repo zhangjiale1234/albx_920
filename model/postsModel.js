@@ -76,5 +76,36 @@ limit ${(query.pageNum - 1) * query.pageSize},${query.pageSize}`;
               callback(null)
           }
       })
-  }
+  },
+  getPostsAddData(id,callback){
+  let sql = 'select * from posts where id = ' + id
+  conn.query(sql,(err,result)=>{
+    if(err) console.log(err)
+    else{
+      callback(result[0])
+    }
+  })
+  },
+  // editPostsData(obj,callback){
+  //   let sql ='update posts set ? where id = ?'
+  //   conn.query(sql,(err,[obj,obj.id],(result)=>{
+  //     if(err) console.log(err)
+  //     else{
+  //       callback(result)
+  //     }
+  //   })
+  // }
+  editPostsData(obj,callback){
+    // sql：使用参数化查询
+    // 它会自动的根据传入的数据对象的属性和对应的值生成sql语句
+    let sql = 'update posts set ? where id = ?'
+    conn.query(sql,[obj,obj.id],(err) => {
+        if(err){
+            console.log(err)
+            callback(err)
+        }else{
+            callback(null)
+        }
+    })
+}
 };

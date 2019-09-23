@@ -74,6 +74,14 @@ router.post('/uploadFile',(req,res)=>{
 })
 router.post('/addPost',(req,res)=>{
   postsController.addPost(req,res)
+}),
+//根据id获取文章数据
+router.get('/getPostsAddData',(req,res)=>{
+  postsController.getPostsAddData(req,res)
+})
+//更改文章数据
+router.post('/editPostsData',(req,res)=>{
+  postsController.editPostsData(req,res)
 })
 // router.post('/searchPostsData',(req,res)=>{
 //   postsController.searchPostsData(req,res)

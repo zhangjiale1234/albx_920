@@ -1,5 +1,6 @@
 const postsModel = require("../model/postsModel");
 const formidable = require("formidable");
+var moment = require('moment');
 module.exports = {
   getPostsData(req, res) {
     postsModel.getPostsData(data => {
@@ -68,5 +69,32 @@ module.exports = {
         res.json({ code: 200, msg: "新增数据成功" });
       }
     });
+  },
+  getPostsAddData(req,res){
+    let id = req.query.id
+    console.log(id)
+    postsModel.getPostsAddData(id,(result)=>{
+       // 为了配合浏览器端的日期显示，这里需要将日期格式转换为：yyyy-MM-ddThh:mm
+       result.created = moment(result.created).format('YYYY-MM-DDTHH:mm')
+      res.json({
+        code:200,
+        msg:'成功',
+        result,
+      })
+    })
+  },
+  editPostsData(req,res){
+    let obj = req.body
+    postsModel.editPostsData(obj,(err,result)=>{
+      if(err) console.log(err)
+      else{
+        res.json({
+          code:200,
+          msg:'成功',
+          result,
+        })
+      }
+    })
+    
   }
 };
