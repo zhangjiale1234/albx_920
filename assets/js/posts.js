@@ -23,7 +23,7 @@ $(function() {
           $("tbody").html(template("postsListTemp", res.data.data));
            // 生成分页结构  总记录数/每页条数
           setPage(Math.ceil(res.data.cnt / pageSize));
-          // setPage(Math.ceil(res.data.cnt / pageSize))
+
         }
       }
     });
@@ -45,9 +45,11 @@ $(function() {
             pageNum = page
             // 重新获取数据生成动态结构
             var obj = {
+              //获取里面的内容 ，以对象的形式传参
                 cate:$('.cateSelector').val(),
                 statu:$('.statuSelector').val()
             }
+            //分页完之后继续发送请求渲染页面
             init(obj)
         }
     })
@@ -75,15 +77,6 @@ $(function() {
     //收集数据 发送ajax请求
     let cate = $('.cateSelector').val()
     let statu = $(".statuSelector").val()
-    // $.ajax({
-    //   url:'/searchPostsData',
-    //   type:'post',
-    //   dataType:'json',
-    //   data:{cate,statu},
-    //   success:function(res){
-    //     console.log(res)
-    //   }
-    // })
     let obj = {cate,statu}
     pageNum = 1
     init(obj)

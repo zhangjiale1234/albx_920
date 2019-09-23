@@ -57,6 +57,9 @@ router.post("/login", (req, res) => {
 router.get('/logout',(req,res)=>{
   userController.logoutAdminPage(req,res)
 })
+
+
+//posts文章页面里的操作
 router.get('/getPostsData',(req,res)=>{
   postsController.getPostsData(req,res)
 })
@@ -65,6 +68,12 @@ router.get('/getPostsList',(req,res)=>{
 })
 router.get('/getSectionData',(req,res)=>{
   postsController.getSectionData(req,res)
+})
+router.post('/uploadFile',(req,res)=>{
+  postsController.uploadFile(req,res)
+})
+router.post('/addPost',(req,res)=>{
+  postsController.addPost(req,res)
 })
 // router.post('/searchPostsData',(req,res)=>{
 //   postsController.searchPostsData(req,res)

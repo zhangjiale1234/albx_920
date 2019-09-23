@@ -44,12 +44,13 @@ limit ${(query.pageNum - 1) * query.pageSize},${query.pageSize}`;
       // err&&console.log(err)
       if (err) return err;
       else {
-        sql = 'select count(*) as cnt from posts where 1=1 '
-        if(query.cate && query.cate != 'all'){ // 说明有分类条件
-            sql += ` and posts.category_id = ${query.cate} `
+        sql = "select count(*) as cnt from posts where 1=1 ";
+        if (query.cate && query.cate != "all") {
+          // 说明有分类条件
+          sql += ` and posts.category_id = ${query.cate} `;
         }
-        if(query.statu && query.statu != 'all'){
-            sql += ` and posts.status = '${query.statu}' `
+        if (query.statu && query.statu != "all") {
+          sql += ` and posts.status = '${query.statu}' `;
         }
         conn.query(sql, (err2, result2) => {
           if (err2) return err;
@@ -66,6 +67,14 @@ limit ${(query.pageNum - 1) * query.pageSize},${query.pageSize}`;
       err && console.log(err);
       callback(data);
     });
+  },
+  addPost(obj,callback){
+      let sql = 'insert into posts set ?'
+      conn.query(sql,obj,(err)=>{
+          if(err) console.log(err)
+          else{
+              callback(null)
+          }
+      })
   }
-
 };
